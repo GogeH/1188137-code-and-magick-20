@@ -71,8 +71,6 @@ var renderWizards = function () {
 
 renderWizards();
 
-userDialog.querySelector('.setup-similar').classList.remove('hidden');
-
 var setup = document.querySelector('.setup');
 
 var setupOpen = document.querySelector('.setup-open');

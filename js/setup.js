@@ -83,6 +83,7 @@ var wizardCoat = document.querySelector('.setup-wizard .wizard-coat');
 var wizardEyes = document.querySelector('.setup-wizard .wizard-eyes');
 var fireBallColor = document.querySelector('.setup-fireball-wrap');
 
+setup.classList.add('hidden');
 
 setupOpen.addEventListener('click', function () {
   userDialog.classList.remove('hidden');

@@ -27,12 +27,12 @@
     }
 
     return mixedElements;
-  };
+  }
 
-  function selectRandomElement (elements) {
+  function selectRandomElement(elements) {
     var randomElement = Math.floor(Math.random() * elements.length);
     return elements[randomElement];
-  };
+  }
 
   function renderWizard(wizard) {
     var wizardElement = similarWizardTemplate.cloneNode(true);
@@ -42,7 +42,7 @@
     wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
 
     return wizardElement;
-  };
+  }
 
   function generateWizards() {
     var moveWizardName = moveElements(WIZARDS_INFO.name);
@@ -58,7 +58,7 @@
       });
     }
     return wizards;
-  };
+  }
 
   function renderWizards() {
     var similarWizards = generateWizards();
@@ -68,7 +68,7 @@
       fragment.appendChild(renderWizard(similarWizards[i]));
     }
     similarListElement.appendChild(fragment);
-  };
+  }
 
   renderWizards();
 

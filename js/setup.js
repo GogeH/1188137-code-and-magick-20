@@ -24,7 +24,7 @@
       var swap = mixedElements[i];
       mixedElements[i] = mixedElements[j];
       mixedElements[j] = swap;
-    };
+    }
 
     return mixedElements;
   };

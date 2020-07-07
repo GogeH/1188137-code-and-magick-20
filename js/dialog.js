@@ -8,8 +8,10 @@
   var wizardCoat = document.querySelector('.setup-wizard .wizard-coat');
   var wizardEyes = document.querySelector('.setup-wizard .wizard-eyes');
   var fireBallColor = document.querySelector('.setup-fireball-wrap');
+  var setupSimilar = document.querySelector('.setup-similar');
 
   userDialog.classList.add('hidden');
+  setupSimilar.classList.remove('hidden');
 
   document.addEventListener('keydown', function (evt) {
     if (evt.keyCode === 27 && inputMenu !== document.activeElement) {

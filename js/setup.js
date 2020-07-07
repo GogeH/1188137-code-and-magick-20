@@ -17,7 +17,7 @@
     fireBallColor: ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848']
   };
 
-  function moveElements(elements) {
+  var moveElements = function(elements) {
     var mixedElements = elements.slice();
     for (var i = mixedElements.length - 1; i > 0; i--) {
       var j = Math.floor(Math.random() * (i + 1));
@@ -29,12 +29,12 @@
     return mixedElements;
   }
 
-  function selectRandomElement(elements) {
+  var selectRandomElement = function(elements) {
     var randomElement = Math.floor(Math.random() * elements.length);
     return elements[randomElement];
   }
 
-  function renderWizard(wizard) {
+  var renderWizard = function(wizard) {
     var wizardElement = similarWizardTemplate.cloneNode(true);
 
     wizardElement.querySelector('.setup-similar-label').textContent = wizard.name + ' ' + wizard.surname;
@@ -44,7 +44,7 @@
     return wizardElement;
   }
 
-  function generateWizards() {
+  var generateWizards = function() {
     var moveWizardName = moveElements(WIZARDS_INFO.name);
     var moveWizardSurname = moveElements(WIZARDS_INFO.surname);
 
@@ -60,7 +60,7 @@
     return wizards;
   }
 
-  function renderWizards() {
+  var renderWizards = function() {
     var similarWizards = generateWizards();
     var fragment = document.createDocumentFragment();
 

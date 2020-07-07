@@ -32,7 +32,7 @@
 
       userDialog.style.left = (userDialog.offsetLeft - shift.x) + 'px';
       userDialog.style.top = (userDialog.offsetTop - shift.y) + 'px';
-    };
+    }
 
     function onMouseUp(upEvt) {
       upEvt.preventDefault();
@@ -45,7 +45,7 @@
         };
         dialogHandle.addEventListener('click', onClickPreventDefault);
       }
-    };
+    }
 
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);

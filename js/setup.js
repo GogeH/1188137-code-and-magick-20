@@ -20,7 +20,7 @@
   function selectRandomElement(elements) {
     var randomElement = Math.floor(Math.random() * elements.length);
     return elements[randomElement];
-  };
+  }
 
   function askPropertiesWizard(wizard) {
     var wizardElement = similarWizardTemplate.cloneNode(true);
@@ -37,7 +37,7 @@
     var moveWizardSurname = window.util.moveElements(WIZARDS_INFO.surname);
 
     var wizards = [];
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < moveWizardName.length && i < 4; i++) {
       wizards.push({
         name: moveWizardName[i],
         surname: moveWizardSurname[i],

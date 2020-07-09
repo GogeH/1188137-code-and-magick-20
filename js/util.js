@@ -11,7 +11,7 @@
     }
 
     return mixedElements;
-  };
+  }
 
   window.util = {
     moveElements: moveElements

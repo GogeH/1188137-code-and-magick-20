@@ -17,24 +17,12 @@
     fireBallColor: ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848']
   };
 
-  var moveElements = function (elements) {
-    var mixedElements = elements.slice();
-    for (var i = mixedElements.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var swap = mixedElements[i];
-      mixedElements[i] = mixedElements[j];
-      mixedElements[j] = swap;
-    }
-
-    return mixedElements;
-  };
-
-  var selectRandomElement = function (elements) {
+  function selectRandomElement(elements) {
     var randomElement = Math.floor(Math.random() * elements.length);
     return elements[randomElement];
   };
 
-  var renderWizard = function (wizard) {
+  function askPropertiesWizard(wizard) {
     var wizardElement = similarWizardTemplate.cloneNode(true);
 
     wizardElement.querySelector('.setup-similar-label').textContent = wizard.name + ' ' + wizard.surname;
@@ -42,11 +30,11 @@
     wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
 
     return wizardElement;
-  };
+  }
 
-  var generateWizards = function () {
-    var moveWizardName = moveElements(WIZARDS_INFO.name);
-    var moveWizardSurname = moveElements(WIZARDS_INFO.surname);
+  function generateWizards() {
+    var moveWizardName = window.util.moveElements(WIZARDS_INFO.name);
+    var moveWizardSurname = window.util.moveElements(WIZARDS_INFO.surname);
 
     var wizards = [];
     for (var i = 0; i < 4; i++) {
@@ -58,26 +46,25 @@
       });
     }
     return wizards;
-  };
+  }
 
-  var renderWizards = function () {
+  function renderWizards() {
     var similarWizards = generateWizards();
     var fragment = document.createDocumentFragment();
 
     for (var i = 0; i < similarWizards.length; i++) {
-      fragment.appendChild(renderWizard(similarWizards[i]));
+      fragment.appendChild(askPropertiesWizard(similarWizards[i]));
     }
     similarListElement.appendChild(fragment);
-  };
+  }
 
   renderWizards();
 
   window.setup = {
     WIZARDS_INFO: WIZARDS_INFO,
 
-    moveElements: moveElements,
     selectRandomElement: selectRandomElement,
-    renderWizard: renderWizard,
+    askPropertiesWizard: askPropertiesWizard,
     generateWizards: generateWizards,
     renderWizards: renderWizards
   };

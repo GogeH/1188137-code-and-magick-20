@@ -4,6 +4,9 @@
 (function () {
   var userDialog = document.querySelector('.setup');
 
+  var setupOpen = document.querySelector('.setup-open');
+  var setupClose = document.querySelector('.setup-close');
+
   var inputMenu = userDialog.querySelector('#active');
   var wizardCoat = document.querySelector('.setup-wizard .wizard-coat');
   var wizardEyes = document.querySelector('.setup-wizard .wizard-eyes');
@@ -12,6 +15,27 @@
 
   userDialog.classList.add('hidden');
   setupSimilar.classList.remove('hidden');
+
+  setupOpen.addEventListener('click', function () {
+    userDialog.classList.remove('hidden');
+  });
+
+  setupOpen.addEventListener('keydown', function (evt) {
+    if (evt.key === 'Enter') {
+      evt.preventDefault();
+      userDialog.classList.remove('hidden');
+    }
+  });
+
+  setupClose.addEventListener('click', function () {
+    userDialog.classList.add('hidden');
+  });
+
+  setupClose.addEventListener('keydown', function (evt) {
+    if (evt.key === 'Enter') {
+      userDialog.classList.add('hidden');
+    }
+  });
 
   document.addEventListener('keydown', function (evt) {
     if (evt.keyCode === 27 && inputMenu !== document.activeElement) {

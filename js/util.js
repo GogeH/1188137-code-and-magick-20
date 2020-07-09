@@ -1,29 +1,20 @@
 'use strict';
 
 (function () {
-  var userDialog = document.querySelector('.setup');
-  var setupOpen = document.querySelector('.setup-open');
-  var setupClose = document.querySelector('.setup-close');
-
-  setupOpen.addEventListener('click', function () {
-    userDialog.classList.remove('hidden');
-  });
-
-  setupOpen.addEventListener('keydown', function (evt) {
-    if (evt.key === 'Enter') {
-      evt.preventDefault();
-      userDialog.classList.remove('hidden');
+  function moveElements(elements) {
+    var mixedElements = elements.slice();
+    for (var i = mixedElements.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var swap = mixedElements[i];
+      mixedElements[i] = mixedElements[j];
+      mixedElements[j] = swap;
     }
-  });
 
-  setupClose.addEventListener('click', function () {
-    userDialog.classList.add('hidden');
-  });
+    return mixedElements;
+  };
 
-  setupClose.addEventListener('keydown', function (evt) {
-    if (evt.key === 'Enter') {
-      userDialog.classList.add('hidden');
-    }
-  });
+  window.util = {
+    moveElements: moveElements
+  };
 
 })();

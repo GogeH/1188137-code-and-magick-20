@@ -67,14 +67,35 @@
     };
   }
 
-  function onLoadWizards(similarWizards) {
-    var elements = [];
-    var MAX_SIMILAR_WIZARD_COUNT = 4;
+  function getRandomNumber(min, max) {
+    return Math.round(min - 0.5 + Math.random() * (max - min + 1))
+  }
 
-    for (var i = 0; i < MAX_SIMILAR_WIZARD_COUNT; i++) {
-      var createdWizard = createWizard(similarWizards[i]);
+  function generate(arr, number) {
+    var result = [];
+    var indexes = [];
+
+    while (result.length < number && result.length !== arr.length) {
+      var randomNumber = getRandomNumber(0, arr.length - 1);
+
+      if (indexes.includes(randomNumber) === false) {
+        result.push(arr[randomNumber]);
+        indexes.push(randomNumber);
+      }
+    }
+
+    return result;
+  }
+
+  function onLoadWizards(similarWizards) {
+    var randomElements = generate(similarWizards, 4);
+    var elements = [];
+
+    for (var i = 0; i < randomElements.length; i++) {
+      var createdWizard = createWizard(randomElements[i]);
       elements.push(createdWizard);
     }
+
     renderWizards(elements);
   }
 

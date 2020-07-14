@@ -12,6 +12,7 @@
   var wizardEyes = document.querySelector('.setup-wizard .wizard-eyes');
   var fireBallColor = document.querySelector('.setup-fireball-wrap');
   var setupSimilar = document.querySelector('.setup-similar');
+  var form = document.querySelector('.setup-wizard-form');
 
   userDialog.classList.add('hidden');
   setupSimilar.classList.remove('hidden');
@@ -60,6 +61,25 @@
     fireBallColor.style.backgroundColor = color;
     document.querySelector('#fireball').value = color;
   });
+
+  function onSubmitButton(evt) {
+
+    var data = new FormData(form);
+
+    function onLoad() {
+      userDialog.classList.add('hidden');
+    };
+
+    function onError(error) {
+      window.modals.warningWindow('Отправить данные не удалось. Код ошибки: ' + error);
+    };
+
+    evt.preventDefault();
+    window.backend.save(data, onLoad, onError);
+
+  };
+
+  form.addEventListener('submit', onSubmitButton);
 
 })();
 

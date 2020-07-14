@@ -25,7 +25,7 @@
   function askPropertiesWizard(wizard) {
     var wizardElement = similarWizardTemplate.cloneNode(true);
 
-    wizardElement.querySelector('.setup-similar-label').textContent = wizard.name + ' ' + selectRandomElement(WIZARDS_INFO.surname);
+    wizardElement.querySelector('.setup-similar-label').textContent = wizard.name + ' ' + wizard.surname;
     wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
     wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
 
@@ -57,14 +57,13 @@
     similarListElement.appendChild(fragment);
   }
 
-  var randomFireBallColor = selectRandomElement(WIZARDS_INFO.fireBallColor);
-
   function createWizard(data) {
     return {
       name: data.name,
+      surname: selectRandomElement(WIZARDS_INFO.surname),
       coatColor: data.colorCoat,
       eyesColor: data.colorEyes,
-      fireBallColor: randomFireBallColor,
+      fireBallColor: selectRandomElement(WIZARDS_INFO.fireBallColor),
     };
   }
 

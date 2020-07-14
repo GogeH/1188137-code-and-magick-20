@@ -68,16 +68,16 @@
 
     function onLoad() {
       userDialog.classList.add('hidden');
-    };
+    }
 
     function onError(error) {
       window.modals.warningWindow('Отправить данные не удалось. Код ошибки: ' + error);
-    };
+    }
 
     evt.preventDefault();
     window.backend.save(data, onLoad, onError);
 
-  };
+  }
 
   form.addEventListener('submit', onSubmitButton);
 

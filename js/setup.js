@@ -48,7 +48,7 @@
     return wizards;
   }
 
-    function renderWizards(similarWizards) {
+  function renderWizards(similarWizards) {
     var fragment = document.createDocumentFragment();
 
     for (var i = 0; i < similarWizards.length; i++) {
@@ -79,7 +79,7 @@
     renderWizards(elements);
   }
 
-  function onError() {
+  function onError(error) {
     window.modals.warningWindow('Отправить данные не удалось. Код ошибки: ' + error);
   }
 

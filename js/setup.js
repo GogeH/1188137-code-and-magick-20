@@ -48,8 +48,7 @@
     return wizards;
   }
 
-  function renderWizards() {
-    var similarWizards = generateWizards();
+  function renderWizards(similarWizards) {
     var fragment = document.createDocumentFragment();
 
     for (var i = 0; i < similarWizards.length; i++) {
@@ -58,7 +57,54 @@
     similarListElement.appendChild(fragment);
   }
 
-  renderWizards();
+  function createWizard(data) {
+    return {
+      name: data.name,
+      surname: selectRandomElement(WIZARDS_INFO.surname),
+      coatColor: data.colorCoat,
+      eyesColor: data.colorEyes,
+      fireBallColor: selectRandomElement(WIZARDS_INFO.fireBallColor),
+    };
+  }
+
+  function getRandomNumber(min, max) {
+    return Math.round(min - 0.5 + Math.random() * (max - min + 1));
+  }
+
+  function generate(arr, number) {
+    var result = [];
+    var indexes = [];
+
+    while (result.length < number && result.length !== arr.length) {
+      var randomNumber = getRandomNumber(0, arr.length - 1);
+
+      if (indexes.includes(randomNumber) === false) {
+        result.push(arr[randomNumber]);
+        indexes.push(randomNumber);
+      }
+    }
+
+    return result;
+  }
+
+  function onLoadWizards(similarWizards) {
+    var randomElements = generate(similarWizards, 4);
+    var elements = [];
+
+    for (var i = 0; i < randomElements.length; i++) {
+      var createdWizard = createWizard(randomElements[i]);
+      elements.push(createdWizard);
+    }
+
+    renderWizards(elements);
+  }
+
+  function onError(error) {
+    window.modals.warningWindow('Отправить данные не удалось. Код ошибки: ' + error);
+  }
+
+
+  window.backend.load(onLoadWizards, onError);
 
   window.setup = {
     WIZARDS_INFO: WIZARDS_INFO,

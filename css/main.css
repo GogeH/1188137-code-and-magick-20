@@ -4,7 +4,6 @@ body
     font: 20px 'PT Mono';
 
     min-width: 1024px;
-    margin: 0;
     margin: 0 auto;
     padding: 0;
 
@@ -496,7 +495,7 @@ footer p
 
 .review-form-title
 {
-    font-family: 'PT Mono';
+  font-family: 'PT Mono', serif;
 
     text-align: left;
 }
